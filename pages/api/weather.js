@@ -2,6 +2,7 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
 import axios from 'axios'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,8 @@ export default function Weather() {
   var lang = "en";
   var units = "metric";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&appid=${apiKey}&lang=${lang}`
+
+  
 
   const searchLocation = (event) => {
     if(event.key === "Enter") {
@@ -35,6 +38,8 @@ export default function Weather() {
     }
   }
 
+  // const iconUrl = `http://openweathermap.org/img/wn/${w.icon}@2x.png`;
+
   return (
     <>
       <div className={styles.row}>
@@ -47,6 +52,7 @@ export default function Weather() {
             />
 
           {errorMessage}
+
           {
             weather && weather.map((w,index) => {
               return (
@@ -55,7 +61,12 @@ export default function Weather() {
                       <div className={styles.city_name}>
                         {data.name}
                       </div>
-                      <div>{w.icon}</div>
+                      <div>
+                        <img 
+                        src={`http://openweathermap.org/img/wn/${w.icon}@2x.png`} 
+                        alt={w.description} 
+                        className={styles.icon}/>
+                      </div>
                       <div>{data.main.temp_min.toFixed()}</div>
                       <p> ~ </p>
                       <div>{data.main.temp_max.toFixed()}°C</div>

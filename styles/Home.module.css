@@ -359,3 +359,9 @@ border-top: none;
 border-left: none;
 border-right: none;
 }
+
+.icon {
+  height: 45px;
+  width: 45px;
+  margin: 0 10px 0 10px;
+}
