@@ -276,3 +276,86 @@
     transform: rotate(0deg);
   }
 }
+
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Outfit', 'Roboto', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
+  color: rgb(99, 99, 99);
+  font-weight: 300;
+  font-size: 26px;
+}
+
+.background:before{
+    content: '';
+    background: url('../public/wooden.jpeg');
+    background-repeat: repeat;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.type_area {
+  width: 100%;
+  height: 400px;
+  background-image: url('/dot.jpeg');
+  background-repeat: repeat-y;
+}
+.row {
+  display: flex;
+  flex-direction:row;
+}
+
+.col {
+  display: flex;
+  flex-direction:column;
+}
+
+.align_right {
+  align-items:flex-end;
+
+}
+.weather_info{
+  align-items: center;
+  margin: 3rem;
+  padding: 0.7rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.city_name{
+  margin: 0 1rem;
+}
+
+.text_location {
+  height:2rem;
+  padding: 0.5rem;
+  border-radius: 25px;
+  background: rgba(255,255,255);
+  color: rgb(100, 99, 99);
+}
+
+.paper {
+  background-color: #fff;
+  color: black;
+  width: 90vw;
+}
+
+.paper input::placeholder {
+  color: rgb(133, 130, 130);
+}
+
+.title {
+height: 4rem;
+width: 90%;
+padding: 10px;
+margin: 10px 30px;
+font-size: 28px;
+border-top: none;
+border-left: none;
+border-right: none;
+}
