@@ -20,6 +20,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
+    "/PostList/Post": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/PostList/Post.js"
+    ],
     "/PostList/postlist": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
