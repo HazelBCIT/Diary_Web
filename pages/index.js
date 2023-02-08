@@ -44,7 +44,7 @@ export default function Home({posts}) {
           <h1 className={styles.ttl_page}><UserName /> Diary</h1>
 
           <form
-            className={styles.form}
+            className={`${styles.paper} ${styles.form}`}
             onSubmit={handleSubmit}
             >
 
@@ -97,13 +97,18 @@ export const MyPosts = (props) => {
   const { posts } = props;
 
   return (
-    <div>
+    <ul className={styles.post_list}>
       {posts.map((post) => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-        </div>
+        <li
+          key={post.id}
+          className={styles.post_listitem}>
+          <a href="">
+            <p>{}</p>
+            <h2>{post.title}</h2>
+            <p>{post.content}</p>
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
