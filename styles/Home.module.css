@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 2rem;
   min-height: 100vh;
 }
 
@@ -97,7 +97,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -125,7 +125,7 @@
 
 .thirteen::before,
 .thirteen::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
 }
@@ -277,91 +277,184 @@
   }
 }
 
-.background {
+/***************************************************
+****************************************************
+                  AUTHOR
+****************************************************
+****************************************************
+
+  - Write your original CSS after here. */
+
+
+/* ============================================
+              COMMON styles
+============================================ */
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  font-family: 'Outfit', 'Roboto', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
-  color: rgb(99, 99, 99);
-  font-weight: 300;
-  font-size: 26px;
-}
-
-.background:before{
-    content: '';
-    background: url('../public/wooden.jpeg');
-    background-repeat: repeat;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-.type_area {
   width: 100%;
-  height: 400px;
-  background-image: url('/dot.jpeg');
-  background-repeat: repeat-y;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: "Outfit", "Roboto", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
 }
+
+.wrapper * {
+  color: black;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  min-height: unset;
+  text-align: center;
+}
+
 .row {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
+  align-items: center;
 }
 
 .col {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
+}
+
+.ttl_page {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .align_right {
-  align-items:flex-end;
-
+  align-items: flex-end;
 }
-.weather_info{
+
+.icon {
+  height: 45px;
+  width: 45px;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin: 1rem auto;
+}
+
+.btn:hover {
+  background-color: black;
+}
+
+/* ============================================
+              COMPONENTS styles
+============================================ */
+
+/*------- COMP Weather -------*/
+.wrapper_weather {
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+
+.weather_info {
   align-items: center;
   margin: 3rem;
   padding: 0.7rem;
   background: rgba(255, 255, 255, 0.2);
 }
 
-.city_name{
-  margin: 0 1rem;
-}
-
 .text_location {
-  height:2rem;
-  padding: 0.5rem;
-  border-radius: 25px;
-  background: rgba(255,255,255);
+  height: 2rem;
+  width: 7rem;
+  padding: .5rem;
+  border-width: 1px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255);
   color: rgb(100, 99, 99);
 }
 
-.paper {
-  background-color: #fff;
-  color: black;
-  width: 90vw;
+/* ============================================
+              pages > index.js
+============================================ */
+
+/*------- pages > index.js - General -------*/
+
+.wrapper_home {
+  content: "";
+  background: url("../public/wooden.jpeg");
+  background-repeat: repeat;
+  background-size: cover;
 }
 
-.paper input::placeholder {
+.form {
+  background-color: #fff;
+  color: black;
+  width: 70vw;
+  max-width: none;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form input::placeholder {
   color: rgb(133, 130, 130);
 }
 
-.title {
-height: 4rem;
-width: 90%;
-padding: 10px;
-margin: 10px 30px;
-font-size: 28px;
-border-top: none;
-border-left: none;
-border-right: none;
+.container_diaryHead {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
 }
 
-.icon {
-  height: 45px;
-  width: 45px;
-  margin: 0 10px 0 10px;
+.ttl_diaryTitle {
+  background-color: #fff;
+  color: black;
+  width: 100%;
+  padding: .5rem;
+  font-size: 2rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  outline: none;
+}
+
+.box_date_weather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.date {
+  display: flex;
+  justify-self: flex-start;
+  width: 10rem;
+  font-size: .8rem;
+}
+
+.textarea_diaryContent {
+  width: 100%;
+  height: 18rem;
+  overflow-y: scroll;
+  background-image: url("/dot.jpeg");
+  background-repeat: repeat-y;
+}
+
+.btn_diarySubmit {
+
 }

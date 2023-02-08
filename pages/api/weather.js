@@ -17,7 +17,7 @@ export default function Weather() {
   var units = "metric";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&appid=${apiKey}&lang=${lang}`
 
-  
+
 
   const searchLocation = (event) => {
     if(event.key === "Enter") {
@@ -57,14 +57,14 @@ export default function Weather() {
             weather && weather.map((w,index) => {
               return (
                 <div key={index}>
-                    <div className={styles.row}>
+                    <div className={`${styles.row} ${styles.wrapper_weather}`}>
                       <div className={styles.city_name}>
                         {data.name}
                       </div>
                       <div>
-                        <img 
-                        src={`http://openweathermap.org/img/wn/${w.icon}@2x.png`} 
-                        alt={w.description} 
+                        <img
+                        src={`http://openweathermap.org/img/wn/${w.icon}@2x.png`}
+                        alt={w.description}
                         className={styles.icon}/>
                       </div>
                       <div>{data.main.temp_min.toFixed()}</div>
@@ -75,8 +75,8 @@ export default function Weather() {
               )
             })
           }
-       
-        
+
+
       </div>
     </>
   )
