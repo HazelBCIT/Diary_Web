@@ -1,26 +1,33 @@
 import styles from '@/styles/Home.module.css'
-import { prisma } from '@/server/db/client'
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Head from 'next/head'
+import Link from 'next/link'
 import UserName from '@/component/UserName.js';
 
 // const PostList = () => <MyPosts />;
 export default function SideMenu(){
 
   return (
-    <div
-      className={`${styles.wrapper} ${styles.wrapper_home}`}
-      >
-      <p className={styles.ttl_page}><UserName /> Diary</p>
+    <div className={styles.wapper_sidemenu}>
       <ul>
-        <li>
-          <button
-             className={styles.}>
-          </button>
-          <button
-             className={styles.}>
-          </button>
+        <li className={styles.sidemenu_list_item}>
+          <Link
+            href=""
+            className={styles.sidemenu_list_text}>
+            New Diary
+          </Link>
+        </li>
+        <li className={styles.sidemenu_list_item}>
+          <Link
+            href=""
+            className={styles.sidemenu_list_text}>
+            Diary List
+          </Link>
+        </li>
+        <li className={styles.sidemenu_list_item}>
+          <Link
+            href=""
+            className={styles.sidemenu_list_text}>
+            Favorite Diary
+          </Link>
         </li>
       </ul>
 
