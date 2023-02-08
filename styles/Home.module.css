@@ -393,6 +393,21 @@
   outline: none;
 }
 
+/*------- COMP MyPosts -------*/
+.post_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  list-style: none;
+  line-height: 3rem;
+}
+
+.post_listitem {
+
+}
+
+
 /* ============================================
               pages > index.js
 ============================================ */
@@ -406,7 +421,7 @@
   background-size: cover;
 }
 
-.form {
+.paper {
   background-color: #fff;
   color: black;
   width: 70vw;
