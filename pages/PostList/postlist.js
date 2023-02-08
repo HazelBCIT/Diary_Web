@@ -1,13 +1,32 @@
 import styles from '@/styles/Home.module.css'
 import { Inter } from '@next/font/google'
+import { prisma } from '@/server/db/client'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
-import MyPosts from '@/pages/index';
+import { MyPosts } from '@/pages/index';
 import UserName from '@/component/UserName.js';
 
+export async function getServerSideProps() {
+  try{
+    const posts = await prisma.post.findMany()
+    return {
+      props: {
+        posts: JSON.parse(JSON.stringify(posts)),
+      }
+    }
+  } catch (error) {
+    console.error(error)
+    return {
+      props: {
+        posts: [],
+      }
+    }
+  }
+}
+
 // const PostList = () => <MyPosts />;
-export default function PostList(){
+export default function PostList({posts}){
 
   return (
     <div
@@ -24,7 +43,7 @@ export default function PostList(){
         <div className={styles.wrapper_main}>
           <h1 className={styles.ttl_page}>List of <UserName /> Diary</h1>
 
-          <MyPosts />
+          <MyPosts posts={posts} />
 
           </div>
         </main>

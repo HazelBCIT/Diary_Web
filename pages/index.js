@@ -93,7 +93,9 @@ export async function getServerSideProps() {
   }
 }
 
-export function MyPosts() {
+export const MyPosts = (props) => {
+  const { posts } = props;
+
   return (
     <div>
       {posts.map((post) => (
