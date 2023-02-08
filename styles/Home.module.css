@@ -295,7 +295,6 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  padding: 2rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -311,6 +310,10 @@
   padding: 0;
   min-height: unset;
   text-align: center;
+}
+
+.wrapper_main {
+  padding: 2rem;
 }
 
 .row {
@@ -407,18 +410,39 @@
 
 }
 
+/*------- COMP SideMenu -------*/
+.sidemenu_list_item {
+  color: white;
+  line-height: 5rem;
+  border-bottom: solid 1px grey;
+}
+
+.sidemenu_list_text  {
+  color: white;
+  padding: 1rem;
+}
 
 /* ============================================
               pages > index.js
 ============================================ */
 
 /*------- pages > index.js - General -------*/
-
 .wrapper_home {
+  display: flex;
+  flex-direction: row;
   content: "";
   background: url("../public/wooden.jpeg");
   background-repeat: repeat;
   background-size: cover;
+}
+
+.wapper_sidemenu {
+  background-color: #585858;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  position: sticky;
 }
 
 .paper {

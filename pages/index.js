@@ -4,8 +4,9 @@ import { prisma } from '@/server/db/client'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
-import Weather from '@/pages/api/weather.js';
-import UserName from '@/component/UserName.js';
+import Weather from '@/pages/api/weather';
+import SideMenu from '@/component/SideMenu';
+import UserName from '@/component/UserName';
 
 export default function Home({posts}) {
 
@@ -39,8 +40,11 @@ export default function Home({posts}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <SideMenu />
+
       <main className={styles.main}>
         <div className={styles.wrapper_main}>
+
           <h1 className={styles.ttl_page}><UserName /> Diary</h1>
 
           <form
@@ -79,6 +83,7 @@ export default function Home({posts}) {
           </form>
         </div>
       </main>
+
     </div>
   )
 }
