@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -411,15 +412,47 @@
 }
 
 /*------- COMP SideMenu -------*/
+.wapper_sidemenu {
+  background-color: #585858;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  position: sticky;
+}
+
+.wapper_sidemenu {
+  overflow: visible;
+}
+
+.sidemenu_list {
+  background-color: white;
+}
+
 .sidemenu_list_item {
+  width: 100%;
+  background-color: #585858;
   color: white;
-  line-height: 5rem;
+  line-height: 3rem;
   border-bottom: solid 1px grey;
+  list-style: none;
+}
+
+.sidemenu_list_item:hover {
+  background-color: white;
+  margin-left: 1rem;
+  border-bottom: solid 1px white;
 }
 
 .sidemenu_list_text  {
+  display: flex;
+  height: 100%;
   color: white;
   padding: 1rem;
+}
+
+.sidemenu_list_text:hover {
+  color: black;
 }
 
 /* ============================================
@@ -434,15 +467,6 @@
   background: url("../public/wooden.jpeg");
   background-repeat: repeat;
   background-size: cover;
-}
-
-.wapper_sidemenu {
-  background-color: #585858;
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  height: 100vh;
-  position: sticky;
 }
 
 .paper {

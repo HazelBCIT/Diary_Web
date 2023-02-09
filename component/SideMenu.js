@@ -7,7 +7,7 @@ export default function SideMenu(){
 
   return (
     <div className={styles.wapper_sidemenu}>
-      <ul>
+      <ul className={styles.sidemenu_list}>
         <li className={styles.sidemenu_list_item}>
           <Link
             href=""
@@ -17,7 +17,7 @@ export default function SideMenu(){
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
-            href=""
+            href="@/pages/PostList/index.js"
             className={styles.sidemenu_list_text}>
             Diary List
           </Link>
