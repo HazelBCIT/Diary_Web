@@ -25,6 +25,6 @@
   },
   "devDependencies": {
     "dotenv-cli": "^7.0.0",
-    "prisma": "^4.10.0"
+    "prisma": "^4.10.1"
   }
 }
