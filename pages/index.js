@@ -34,7 +34,7 @@ export default function Home({posts}) {
       className={`${styles.wrapper} ${styles.wrapper_home}`}
       >
       <Head>
-        <title>Your Diary</title>
+        <title>Miood - Home</title>
         <meta name="description" content="A diary app that you can write everyday event" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
