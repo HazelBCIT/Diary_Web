@@ -21,11 +21,11 @@ export default function Prompts(){
   
     return (
       <>
-        <button className={styles.icon} onClick={generateQuote}>
-          <img src="/icons/change.png" />
+        <button className={styles.icon} style={{alignSelf:"flex-end"}} onClick={generateQuote}>
+          <img style={{padding:4}} src="/icons/change.png" />
         </button>
-        <p>{sentence}</p>
-        <p>{author}</p>
+        <p>"{sentence}"</p>
+        <p>--{author}</p>
       </>
     );
   }

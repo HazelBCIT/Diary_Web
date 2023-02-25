@@ -4,14 +4,53 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
 import Weather from '@/pages/api/weather';
+import ShowWeatherBtn from './api/weather_btn';
+import LocationInput from './api/location_input';
 import SideMenu from '@/component/SideMenu';
 import UserName from '@/component/UserName';
 import Prompts from '@/component/prompts';
-import ShowBtn from '@/component/prompts_btn';
+import ShowPromptsBtn from '@/component/prompts_btn';
 import TopBar from '@/component/top_bar'
 
 
 export default function Home({posts}) {
+
+  // Weather API
+  const [location, setLocation] = useState('');
+  const [data,setData] = useState({});
+  const [weather, setWeather] = useState();
+  const [errorMessage, setErrorMessage] = useState('');
+
+  var weatherApiKey = "95cd390841f1bbe052afd1a88c4fd163"
+  var weatherLang = "en";
+  var weatherUnits = "metric";
+  const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${weatherUnits}&appid=${weatherApiKey}&lang=${weatherLang}`
+
+    const searchLocation = (event) => {
+    
+    if(event.key === "Enter") {
+      axios.get(weatherUrl)
+      .then((response)=>{
+        console.clear();
+        setData(response.data)
+        console.log(response.data);
+        setWeather(response.data.weather);
+        setErrorMessage("")
+      }).catch(err => {
+        console.log(err);
+        setErrorMessage("Please enter another location.")
+        setData({})
+        setWeather
+      })
+      event.preventDefault();
+      setLocation('')
+    }
+    
+  }
+
+  function setLocationChange(event) {
+    setLocation(event.target.value)
+  }
 
   // Get Today's Date
   var today = new Date();
@@ -44,6 +83,17 @@ export default function Home({posts}) {
     }
   }
 
+  // Weather button
+  const [weatherIsOpen, setWeatherIsOpen] = useState(false);
+
+  function showWeatherHandler() {
+    if (weatherIsOpen) {
+      setWeatherIsOpen(false);
+    } else {
+      setWeatherIsOpen(true);
+    }
+  }
+
   // Prompts button
   const [barIsOpen, setBarIsOpen] = useState(false);
 
@@ -61,7 +111,7 @@ export default function Home({posts}) {
       style={{ backgroundImage: `url(${bgImages[bgIndex]})` }}
       >
       <Head>
-        <title>Your Diary</title>
+        <title>Miood Diary</title>
         <meta name="description" content="A diary app that you can write everyday event" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
@@ -80,8 +130,8 @@ export default function Home({posts}) {
           <button className={styles.bg_button} onClick={changeBackgroundImage}>
             <img src="/icons/brush.png" alt=""/>
             <div className={styles.tooltip_content}>
-    Change Background
-  </div> 
+              Change Background
+            </div> 
           </button>
 
           <form
@@ -98,16 +148,35 @@ export default function Home({posts}) {
                 onChange={(e) => setTitle(e.target.value)}
               />
 
-              <div className={styles.tool_bar}>
+              <div className={styles.infoBar}>
                 <div class={`${styles.date} ${styles.icon}`}>
                   <img style={{padding:2, marginRight:10}} src="/icons/calender.png" />
                   {today}
                 </div>
-                <Weather></Weather>
-                <ShowBtn showBtnHandler={showBtnHandler} />
-                {barIsOpen && <Prompts />}
+                <div className={styles.infoBar_right}>
+                  <Weather 
+                    weather={weather}
+                    data={data}
+                  />
+                  <ShowWeatherBtn showWeatherHandler={showWeatherHandler} />
+                  <ShowPromptsBtn showBtnHandler={showBtnHandler} />
+                </div>
+                
               </div>
 
+              <div className={styles.location_container}>
+                {weatherIsOpen && <LocationInput 
+                  location={location}
+                  setLocationChange={setLocationChange}
+                  searchLocation={searchLocation}
+                />}
+              </div>
+              
+             
+
+              <div className={styles.prompts_bar}>
+                {barIsOpen && <Prompts />}
+              </div>
               
 
             </div>
@@ -120,8 +189,8 @@ export default function Home({posts}) {
             />
 
             <button
-              className={`${styles.btn} ${styles.btn_diarySubmit}`}
-              type="submit">Submit</button>
+              className={styles.btn}
+              type="submit">Save</button>
           </form>
         </div>
       </main>
