@@ -126,7 +126,9 @@ export default function Home({posts}) {
       style={{ backgroundImage: `url(${bgImages[bgIndex]})` }}
       >
       <Head>
+
         <title>Miood Diary</title>
+
         <meta name="description" content="A diary app that you can write everyday event" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />

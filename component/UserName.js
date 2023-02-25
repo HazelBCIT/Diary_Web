@@ -1,6 +1,9 @@
+import { useState, useEffect } from 'react';
+
 export default function UserName() {
+  const [myUsername, setMyUsername] = useState('Miood');
   // Get User's name
-  const UserName = ("your").toUpperCase();
+  const UserName = `${myUsername.charAt(0).toUpperCase()}${myUsername.slice(1)}'s`;
 
   return(
     <span>{UserName}</span>
