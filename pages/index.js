@@ -105,6 +105,21 @@ export default function Home({posts}) {
     }
   }
 
+  // Font family picker
+  const [fontFamily, setFontFamily] = useState('Arial');
+  const handleFontChange = (newFont) => {
+    setFontFamily(newFont);
+  };
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  function handleClick () {
+    if (showDropdown) {
+      setShowDropdown(false);
+    } else {
+      setShowDropdown(true);
+    }
+  };
+
   return (
     <div
       className={`${styles.wrapper} ${styles.wrapper_home_1}`}
@@ -147,7 +162,7 @@ export default function Home({posts}) {
                 placeholder="Entry Title"
                 onChange={(e) => setTitle(e.target.value)}
               />
-
+{/*------------ Info bar ----------- */}
               <div className={styles.infoBar}>
                 <div class={`${styles.date} ${styles.icon}`}>
                   <img style={{padding:2, marginRight:10}} src="/icons/calender.png" />
@@ -161,9 +176,10 @@ export default function Home({posts}) {
                   <ShowWeatherBtn showWeatherHandler={showWeatherHandler} />
                   <ShowPromptsBtn showBtnHandler={showBtnHandler} />
                 </div>
-                
               </div>
-
+              
+             
+{/*------------ Location input ----------- */}
               <div className={styles.location_container}>
                 {weatherIsOpen && <LocationInput 
                   location={location}
@@ -171,17 +187,39 @@ export default function Home({posts}) {
                   searchLocation={searchLocation}
                 />}
               </div>
-              
-             
 
+{/*------------ Prompts area ----------- */}
               <div className={styles.prompts_bar}>
                 {barIsOpen && <Prompts />}
               </div>
-              
+            </div>
 
+{/*------------ Font picker ----------- */}
+            <div className={styles.fontPicker_container}>
+              <p style={{ fontFamily: fontFamily }}> {fontFamily} </p>
+               <img 
+                className={styles.icon} 
+                style={{padding:17}}
+                src="/icons/arrow_down.png" 
+                alt="arrow_down"
+                onClick={handleClick} 
+              />
+
+              {showDropdown && (
+                <>
+                  <div className={`${styles.row} ${styles.dropdown_menu}`}>
+                    <ul className={styles.list}>
+                      <li><button onClick={() => handleFontChange('Helvetica')} style={{ fontFamily:"Helvetica "}}>Helvetica</button></li>
+                      <li><button onClick={() => handleFontChange('Times New Roman')} style={{ fontFamily:"Times New Roman" }}>Times New Roman</button></li>
+                      <li><button onClick={() => handleFontChange('Kalam')} style={{ fontFamily:"Kalam" }}>Kalam</button></li>
+                    </ul>
+                  </div>
+                </>
+              )}
             </div>
 
             <textarea
+              style={{ fontFamily: fontFamily }}
               value={content}
               className={styles.textarea_diaryContent}
               placeholder="Write about your day"

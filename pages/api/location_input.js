@@ -1,8 +1,4 @@
 import styles from '@/styles/Home.module.css'
-import { useState } from 'react'
-import axios from 'axios'
-
-
 
 export default function LocationInput(props) {
 
