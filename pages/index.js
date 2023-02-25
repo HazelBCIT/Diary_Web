@@ -1,5 +1,4 @@
 import styles from '@/styles/Home.module.css'
-import { Inter } from '@next/font/google'
 import { prisma } from '@/server/db/client'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -7,6 +6,10 @@ import Head from 'next/head'
 import Weather from '@/pages/api/weather';
 import SideMenu from '@/component/SideMenu';
 import UserName from '@/component/UserName';
+import Prompts from '@/component/prompts';
+import ShowBtn from '@/component/prompts_btn';
+import TopBar from '@/component/top_bar'
+
 
 export default function Home({posts}) {
 
@@ -29,32 +32,64 @@ export default function Home({posts}) {
     console.log(res.data)
   }
 
+  // Change background button
+  const [bgIndex, setBgIndex] = useState(0);
+  const bgImages = ['bg/bg_1.jpg', 'bg/bg_2.jpg', 'bg/bg_3.jpg', 'bg/bg_4.jpg', 'bg/bg_5.jpg', 'bg/bg_6.jpg'];
+
+  function changeBackgroundImage() {
+    if (bgIndex === bgImages.length - 1) {
+      setBgIndex(0);
+    } else {
+      setBgIndex(bgIndex + 1);
+    }
+  }
+
+  // Prompts button
+  const [barIsOpen, setBarIsOpen] = useState(false);
+
+  function showBtnHandler() {
+    if (barIsOpen) {
+      setBarIsOpen(false);
+    } else {
+      setBarIsOpen(true);
+    }
+  }
+
   return (
     <div
-      className={`${styles.wrapper} ${styles.wrapper_home}`}
+      className={`${styles.wrapper} ${styles.wrapper_home_1}`}
+      style={{ backgroundImage: `url(${bgImages[bgIndex]})` }}
       >
       <Head>
         <title>Your Diary</title>
         <meta name="description" content="A diary app that you can write everyday event" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <SideMenu />
+      <TopBar />
 
       <main className={styles.main}>
         <div className={styles.wrapper_main}>
 
-          <h1 className={styles.ttl_page}><UserName /> Diary</h1>
+        
+          {/* <h1 className={styles.ttl_page}><UserName /> Diary</h1> */}
+          
+
+          <button className={styles.bg_button} onClick={changeBackgroundImage}>
+            <img src="/icons/brush.png" alt=""/>
+            <div className={styles.tooltip_content}>
+    Change Background
+  </div> 
+          </button>
 
           <form
             className={`${styles.paper} ${styles.form}`}
             onSubmit={handleSubmit}
             >
 
-            <div
-              className={styles.container_diaryHead}
-              >
+            <div className={styles.container_diaryHead}>
               <input
                 type="text"
                 value={title}
@@ -63,10 +98,17 @@ export default function Home({posts}) {
                 onChange={(e) => setTitle(e.target.value)}
               />
 
-              <div className={styles.box_date_weather}>
-                <p class={styles.date}>{today}</p>
+              <div className={styles.tool_bar}>
+                <div class={`${styles.date} ${styles.icon}`}>
+                  <img style={{padding:2, marginRight:10}} src="/icons/calender.png" />
+                  {today}
+                </div>
                 <Weather></Weather>
+                <ShowBtn showBtnHandler={showBtnHandler} />
+                {barIsOpen && <Prompts />}
               </div>
+
+              
 
             </div>
 
@@ -87,6 +129,7 @@ export default function Home({posts}) {
     </div>
   )
 }
+
 
 export async function getServerSideProps() {
   const posts = await prisma.post.findMany()

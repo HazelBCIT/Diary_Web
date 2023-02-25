@@ -12,21 +12,24 @@ export default function SideMenu(){
           <Link
             href=""
             className={styles.sidemenu_list_text}>
-            New Diary
+              <img style={{padding:2}} src="/icons/add.png"/>
+              New Diary
           </Link>
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
             href="@/pages/PostList/index.js"
             className={styles.sidemenu_list_text}>
-            Diary List
+              <img style={{padding:3}} src="/icons/list.png"/>
+              Diary List
           </Link>
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
             href=""
             className={styles.sidemenu_list_text}>
-            Favorite Diary
+              <img src="/icons/favorite.png"/>
+              Favorite Diary
           </Link>
         </li>
       </ul>
