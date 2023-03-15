@@ -32,6 +32,14 @@ export default function SideMenu(){
               Favorite Diary
           </Link>
         </li>
+        <li className={styles.sidemenu_list_item}>
+          <Link
+            href=""
+            className={styles.sidemenu_list_text}>
+              <img style={{padding:2}} src="/icons/book.png"/>
+              Back To Cover
+          </Link>
+        </li>
       </ul>
 
     </div>

@@ -11,6 +11,7 @@ import UserName from '@/component/UserName';
 import Prompts from '@/component/prompts';
 import ShowPromptsBtn from '@/component/prompts_btn';
 import TopBar from '@/component/top_bar'
+import Link from 'next/link';
 
 
 export default function Home({posts}) {
@@ -106,7 +107,7 @@ export default function Home({posts}) {
   }
 
   // Font family picker
-  const [fontFamily, setFontFamily] = useState('Arial');
+  const [fontFamily, setFontFamily] = useState('Helvetica');
   const handleFontChange = (newFont) => {
     setFontFamily(newFont);
   };
@@ -119,6 +120,22 @@ export default function Home({posts}) {
       setShowDropdown(true);
     }
   };
+
+  // Font size picker
+  const [fontSize, setFontSize] = useState('18px');
+  const handleFontSizeChange = (newFontSize) => {
+    setFontSize(newFontSize);
+  };
+
+  const [showSizeDropdown, setShowSizeDropdown] = useState(false);
+  function handleSizeClick () {
+    if (showSizeDropdown) {
+      setShowSizeDropdown(false);
+    } else {
+      setShowSizeDropdown(true);
+    }
+  };
+
 
   return (
     <div
@@ -139,10 +156,6 @@ export default function Home({posts}) {
 
       <main className={styles.main}>
         <div className={styles.wrapper_main}>
-
-        
-          {/* <h1 className={styles.ttl_page}><UserName /> Diary</h1> */}
-          
 
           <button className={styles.bg_button} onClick={changeBackgroundImage}>
             <img src="/icons/brush.png" alt=""/>
@@ -197,31 +210,110 @@ export default function Home({posts}) {
             </div>
 
 {/*------------ Font picker ----------- */}
-            <div className={styles.fontPicker_container}>
-              <p style={{ fontFamily: fontFamily }}> {fontFamily} </p>
-               <img 
-                className={styles.icon} 
-                style={{padding:17}}
-                src="/icons/arrow_down.png" 
-                alt="arrow_down"
-                onClick={handleClick} 
-              />
+            <div className={styles.tool_bar}>
+              {/*------------ Font Family ----------- */}
+              <div className={styles.fontPicker_container}>
+                <p style={{ fontFamily: fontFamily, width:160}}> {fontFamily} </p>
+                <img 
+                  className={styles.icon} 
+                  style={{width:15, height:10}}
+                  src="/icons/arrow_down.png" 
+                  alt="arrow_down"
+                  onClick={handleClick} 
+                />
 
-              {showDropdown && (
-                <>
-                  <div className={`${styles.row} ${styles.dropdown_menu}`}>
-                    <ul className={styles.list}>
-                      <li><button onClick={() => handleFontChange('Helvetica')} style={{ fontFamily:"Helvetica "}}>Helvetica</button></li>
-                      <li><button onClick={() => handleFontChange('Times New Roman')} style={{ fontFamily:"Times New Roman" }}>Times New Roman</button></li>
-                      <li><button onClick={() => handleFontChange('Kalam')} style={{ fontFamily:"Kalam" }}>Kalam</button></li>
-                    </ul>
-                  </div>
-                </>
-              )}
+                {showDropdown && (
+                  <>
+                    <div className={styles.dropdown_menu}>
+                      <ul className={styles.list}>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Helvetica')} 
+                            style={{ fontFamily:"Helvetica "}}
+                            className={styles.font_btn}
+                          >Helvetica</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Times New Roman')} 
+                            style={{ fontFamily:"Times New Roman" }}
+                            className={styles.font_btn}
+                          >Times New Roman</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Raleway')} 
+                            style={{ fontFamily:"Raleway" }}
+                            className={styles.font_btn}
+                          >Raleway</button>
+                          
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Kalam')} 
+                            style={{ fontFamily:"Kalam" }}
+                            className={styles.font_btn}
+                          >Kalam</button>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                )}
+              </div>
+              {/*------------ Font Size ----------- */}
+              <div className={styles.fontPicker_container}>
+                <p style={{width:160}}> {fontSize} </p>
+                <img 
+                  className={styles.icon} 
+                  style={{width:15, height:10}}
+                  src="/icons/arrow_down.png" 
+                  alt="arrow_down"
+                  onClick={handleSizeClick} 
+                />
+
+                {showSizeDropdown && (
+                  <>
+                    <div className={styles.dropdown_menu}>
+                      <ul className={styles.list}>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('16px')} 
+                            style={{ fontSize:"16px"}}
+                            className={styles.font_btn}
+                          >16px</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('18px')} 
+                            style={{ fontSize:"18px" }}
+                            className={styles.font_btn}
+                          >18px</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('24px')} 
+                            style={{ fontSize:"24px" }}
+                            className={styles.font_btn}
+                          >24px</button>
+                          
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('32px')} 
+                            style={{ fontSize:"32px" }}
+                            className={styles.font_btn}
+                          >32px</button>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
+            
 
             <textarea
-              style={{ fontFamily: fontFamily }}
+              style={{ fontFamily: fontFamily , fontSize:fontSize }}
               value={content}
               className={styles.textarea_diaryContent}
               placeholder="Write about your day"

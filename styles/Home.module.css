@@ -389,7 +389,7 @@
   height: 2rem;
   width: 7rem;
   padding: .5rem;
-  border-width: 1px;
+  border: 1px solid rgb(100, 99, 99);
   border-radius: 10px;
   background: rgba(255, 255, 255);
   color: rgb(100, 99, 99);
@@ -406,9 +406,6 @@
   line-height: 3rem;
 }
 
-.post_listitem {
-
-}
 
 /*------- COMP SideMenu -------*/
 .wapper_sidemenu {
@@ -418,7 +415,9 @@
   width: 20%;
   height: 100vh;
   position: sticky;
-  z-index: 2;
+  z-index: 0;
+  top: 20px;
+  padding-top: 70px;
 }
 
 .wapper_sidemenu {
@@ -439,7 +438,8 @@
 }
 
 .sidemenu_list_item:hover {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
   margin-left: 1rem;
   border-bottom: solid 1px white;
 }
@@ -485,7 +485,7 @@
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .form input::placeholder {
@@ -499,7 +499,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
   width: 100%;
 }
 
@@ -592,7 +591,6 @@
   top:0;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
 }
 
@@ -603,21 +601,33 @@
 }
 
 .icon img{
-  width:30px;
-  height:30px;
+  width:35px;
+  height:35px;
   background-color: none;
 }
 
 .book_icon {
   position: absolute;
-  left: 18%;
-  top:30%
+  left:14px;
+  top: 15px;
+  z-index: 99;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.book_icon p{
+  color: white;
+  padding-left: 10px;
+  width: 200px;
+  font-size: 18px;
 }
 
 .logo {
   height: 60px;
   position: absolute;
-  left: 52%;
+  left: 50%;
 }
 
 .prompts_bar {
@@ -635,10 +645,60 @@
   display: flex;
   flex-direction: row;
   align-self: flex-end;
+  margin-top: 10px;
 }
 
+.tool_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  background-color: #aaaaa88e;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
 .fontPicker_container {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+}
+
+.dropdown_menu {
+  position: absolute;
+  top:46px;
+  left:0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: auto;
+  width: 200px;
+}
+
+.list {
+  list-style-type: none;
+  height: 100%;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: flex-start;
+}
+
+.font_btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  padding: 5px 5px;
+  width: 100%;
+  text-align: left;
+}
+
+.font_btn:hover {
+  background:#e5e5e5;
+  border: none;
+  font-size: 18px;
+
 }

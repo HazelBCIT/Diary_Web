@@ -1,9 +1,4 @@
-import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import { useState } from 'react'
-import axios from 'axios'
-import Image from 'next/image'
-
 
 
 export default function Weather(props) {
