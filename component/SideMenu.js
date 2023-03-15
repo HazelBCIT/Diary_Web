@@ -1,4 +1,4 @@
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/SideMenu.module.css'
 import Link from 'next/link'
 import UserName from '@/component/UserName.js';
 
@@ -15,6 +15,7 @@ export default function SideMenu(){
               <img style={{padding:2}} src="/icons/add.png"/>
               New Diary
           </Link>
+          <span></span><span></span><span></span><span></span>
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
@@ -23,6 +24,7 @@ export default function SideMenu(){
               <img style={{padding:3}} src="/icons/list.png"/>
               Diary List
           </Link>
+          <span></span><span></span><span></span><span></span>
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
@@ -31,14 +33,18 @@ export default function SideMenu(){
               <img src="/icons/favorite.png"/>
               Favorite Diary
           </Link>
+          <span></span><span></span><span></span><span></span>
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
-            href=""
+            href="/cover"
             className={styles.sidemenu_list_text}>
               <img style={{padding:2}} src="/icons/book.png"/>
               Back To Cover
           </Link>
+          <span></span><span></span><span></span><span></span>
+        </li>
+        <li className={styles.sidemenu_list_item} style={{height:400}}>
         </li>
       </ul>
 

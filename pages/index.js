@@ -10,8 +10,8 @@ import SideMenu from '@/component/SideMenu';
 import UserName from '@/component/UserName';
 import Prompts from '@/component/prompts';
 import ShowPromptsBtn from '@/component/prompts_btn';
-import TopBar from '@/component/top_bar'
-import Link from 'next/link';
+import TopBar from '@/component/top_bar';
+import SaveBtn from '@/component/save_btn';
 
 
 export default function Home({posts}) {
@@ -156,7 +156,7 @@ export default function Home({posts}) {
 
       <main className={styles.main}>
         <div className={styles.wrapper_main}>
-
+          {/*------------ Change BG button ----------- */}
           <button className={styles.bg_button} onClick={changeBackgroundImage}>
             <img src="/icons/brush.png" alt=""/>
             <div className={styles.tooltip_content}>
@@ -261,8 +261,8 @@ export default function Home({posts}) {
                 )}
               </div>
               {/*------------ Font Size ----------- */}
-              <div className={styles.fontPicker_container}>
-                <p style={{width:160}}> {fontSize} </p>
+              <div className={styles.fontPicker_container} style={{borderLeft:"1px solid white", marginLeft:15}}>
+                <p style={{width:100}}> {fontSize} </p>
                 <img 
                   className={styles.icon} 
                   style={{width:15, height:10}}
@@ -273,7 +273,7 @@ export default function Home({posts}) {
 
                 {showSizeDropdown && (
                   <>
-                    <div className={styles.dropdown_menu}>
+                    <div className={styles.dropdown_menu} style={{width:100}}>
                       <ul className={styles.list}>
                         <li style={{width:"100%"}}>
                           <button 
@@ -310,7 +310,6 @@ export default function Home({posts}) {
                 )}
               </div>
             </div>
-            
 
             <textarea
               style={{ fontFamily: fontFamily , fontSize:fontSize }}
@@ -320,9 +319,11 @@ export default function Home({posts}) {
               onChange={(e) => setContent(e.target.value)}
             />
 
-            <button
+            <SaveBtn />
+
+            {/* <button
               className={styles.btn}
-              type="submit">Save</button>
+              type="submit">Save</button> */}
           </form>
         </div>
       </main>
