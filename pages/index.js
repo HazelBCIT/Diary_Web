@@ -74,7 +74,7 @@ export default function Home({posts}) {
 
   // Change background button
   const [bgIndex, setBgIndex] = useState(0);
-  const bgImages = ['bg/bg_1.jpg', 'bg/bg_2.jpg', 'bg/bg_3.jpg', 'bg/bg_4.jpg', 'bg/bg_5.jpg', 'bg/bg_6.jpg'];
+  const bgImages = ['cover/bedsheet.jpg', 'bg/bg_2.jpg', 'bg/bg_3.jpg', 'bg/bg_4.jpg', 'bg/bg_5.jpg', 'bg/bg_6.jpg'];
 
   function changeBackgroundImage() {
     if (bgIndex === bgImages.length - 1) {
@@ -320,10 +320,6 @@ export default function Home({posts}) {
             />
 
             <SaveBtn />
-
-            {/* <button
-              className={styles.btn}
-              type="submit">Save</button> */}
           </form>
         </div>
       </main>

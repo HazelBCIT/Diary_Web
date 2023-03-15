@@ -30,6 +30,7 @@
   position: relative;
   z-index: 1;
   transition: 0.5s;
+  overflow: hidden;
 }
 
 /* .sidemenu_list_item:hover {
@@ -61,7 +62,7 @@
 
 .sidemenu_list_item span {
   position: absolute;
-  top: 20px;
+  top: 0px;
   width: 25%;
   height: 100%;
   background-color: var(--c);

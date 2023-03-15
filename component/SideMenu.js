@@ -44,8 +44,6 @@ export default function SideMenu(){
           </Link>
           <span></span><span></span><span></span><span></span>
         </li>
-        <li className={styles.sidemenu_list_item} style={{height:400}}>
-        </li>
       </ul>
 
     </div>
