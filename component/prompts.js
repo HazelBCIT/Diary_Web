@@ -10,13 +10,13 @@ export default function Prompts(){
     const [selectedIndex, setSelectedIndex] = useState(
       Math.floor(Math.random() * promptsNum) + 1
     );
-    const [author, setAuthor] = useState(data[selectedIndex].author);
-    const [sentence, setSentence] = useState(data[selectedIndex].sentence);
+    const [author, setAuthor] = useState(data[selectedIndex]?.author);
+    const [sentence, setSentence] = useState(data[selectedIndex]?.sentence);
   
     function generateQuote() {
       setSelectedIndex(Math.floor(Math.random() * promptsNum) + 1);
-      setAuthor(data[selectedIndex].author);
-      setSentence(data[selectedIndex].sentence);
+      setAuthor(data[selectedIndex]?.author);
+      setSentence(data[selectedIndex]?.sentence);
     }
   
     return (

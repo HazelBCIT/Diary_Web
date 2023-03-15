@@ -10,7 +10,8 @@ import SideMenu from '@/component/SideMenu';
 import UserName from '@/component/UserName';
 import Prompts from '@/component/prompts';
 import ShowPromptsBtn from '@/component/prompts_btn';
-import TopBar from '@/component/top_bar'
+import TopBar from '@/component/top_bar';
+import SaveBtn from '@/component/save_btn';
 
 
 export default function Home({posts}) {
@@ -73,7 +74,7 @@ export default function Home({posts}) {
 
   // Change background button
   const [bgIndex, setBgIndex] = useState(0);
-  const bgImages = ['bg/bg_1.jpg', 'bg/bg_2.jpg', 'bg/bg_3.jpg', 'bg/bg_4.jpg', 'bg/bg_5.jpg', 'bg/bg_6.jpg'];
+  const bgImages = ['cover/bedsheet.jpg', 'bg/bg_2.jpg', 'bg/bg_3.jpg', 'bg/bg_4.jpg', 'bg/bg_5.jpg', 'bg/bg_6.jpg'];
 
   function changeBackgroundImage() {
     if (bgIndex === bgImages.length - 1) {
@@ -106,7 +107,7 @@ export default function Home({posts}) {
   }
 
   // Font family picker
-  const [fontFamily, setFontFamily] = useState('Arial');
+  const [fontFamily, setFontFamily] = useState('Helvetica');
   const handleFontChange = (newFont) => {
     setFontFamily(newFont);
   };
@@ -119,6 +120,22 @@ export default function Home({posts}) {
       setShowDropdown(true);
     }
   };
+
+  // Font size picker
+  const [fontSize, setFontSize] = useState('18px');
+  const handleFontSizeChange = (newFontSize) => {
+    setFontSize(newFontSize);
+  };
+
+  const [showSizeDropdown, setShowSizeDropdown] = useState(false);
+  function handleSizeClick () {
+    if (showSizeDropdown) {
+      setShowSizeDropdown(false);
+    } else {
+      setShowSizeDropdown(true);
+    }
+  };
+
 
   return (
     <div
@@ -139,11 +156,7 @@ export default function Home({posts}) {
 
       <main className={styles.main}>
         <div className={styles.wrapper_main}>
-
-        
-          {/* <h1 className={styles.ttl_page}><UserName /> Diary</h1> */}
-          
-
+          {/*------------ Change BG button ----------- */}
           <button className={styles.bg_button} onClick={changeBackgroundImage}>
             <img src="/icons/brush.png" alt=""/>
             <div className={styles.tooltip_content}>
@@ -197,40 +210,116 @@ export default function Home({posts}) {
             </div>
 
 {/*------------ Font picker ----------- */}
-            <div className={styles.fontPicker_container}>
-              <p style={{ fontFamily: fontFamily }}> {fontFamily} </p>
-               <img 
-                className={styles.icon} 
-                style={{padding:17}}
-                src="/icons/arrow_down.png" 
-                alt="arrow_down"
-                onClick={handleClick} 
-              />
+            <div className={styles.tool_bar}>
+              {/*------------ Font Family ----------- */}
+              <div className={styles.fontPicker_container}>
+                <p style={{ fontFamily: fontFamily, width:160}}> {fontFamily} </p>
+                <img 
+                  className={styles.icon} 
+                  style={{width:15, height:10}}
+                  src="/icons/arrow_down.png" 
+                  alt="arrow_down"
+                  onClick={handleClick} 
+                />
 
-              {showDropdown && (
-                <>
-                  <div className={`${styles.row} ${styles.dropdown_menu}`}>
-                    <ul className={styles.list}>
-                      <li><button onClick={() => handleFontChange('Helvetica')} style={{ fontFamily:"Helvetica "}}>Helvetica</button></li>
-                      <li><button onClick={() => handleFontChange('Times New Roman')} style={{ fontFamily:"Times New Roman" }}>Times New Roman</button></li>
-                      <li><button onClick={() => handleFontChange('Kalam')} style={{ fontFamily:"Kalam" }}>Kalam</button></li>
-                    </ul>
-                  </div>
-                </>
-              )}
+                {showDropdown && (
+                  <>
+                    <div className={styles.dropdown_menu}>
+                      <ul className={styles.list}>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Helvetica')} 
+                            style={{ fontFamily:"Helvetica "}}
+                            className={styles.font_btn}
+                          >Helvetica</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Times New Roman')} 
+                            style={{ fontFamily:"Times New Roman" }}
+                            className={styles.font_btn}
+                          >Times New Roman</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Raleway')} 
+                            style={{ fontFamily:"Raleway" }}
+                            className={styles.font_btn}
+                          >Raleway</button>
+                          
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontChange('Kalam')} 
+                            style={{ fontFamily:"Kalam" }}
+                            className={styles.font_btn}
+                          >Kalam</button>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                )}
+              </div>
+              {/*------------ Font Size ----------- */}
+              <div className={styles.fontPicker_container} style={{borderLeft:"1px solid white", marginLeft:15}}>
+                <p style={{width:100}}> {fontSize} </p>
+                <img 
+                  className={styles.icon} 
+                  style={{width:15, height:10}}
+                  src="/icons/arrow_down.png" 
+                  alt="arrow_down"
+                  onClick={handleSizeClick} 
+                />
+
+                {showSizeDropdown && (
+                  <>
+                    <div className={styles.dropdown_menu} style={{width:100}}>
+                      <ul className={styles.list}>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('16px')} 
+                            style={{ fontSize:"16px"}}
+                            className={styles.font_btn}
+                          >16px</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('18px')} 
+                            style={{ fontSize:"18px" }}
+                            className={styles.font_btn}
+                          >18px</button>
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('24px')} 
+                            style={{ fontSize:"24px" }}
+                            className={styles.font_btn}
+                          >24px</button>
+                          
+                        </li>
+                        <li style={{width:"100%"}}>
+                          <button 
+                            onClick={() => handleFontSizeChange('32px')} 
+                            style={{ fontSize:"32px" }}
+                            className={styles.font_btn}
+                          >32px</button>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
 
             <textarea
-              style={{ fontFamily: fontFamily }}
+              style={{ fontFamily: fontFamily , fontSize:fontSize }}
               value={content}
               className={styles.textarea_diaryContent}
               placeholder="Write about your day"
               onChange={(e) => setContent(e.target.value)}
             />
 
-            <button
-              className={styles.btn}
-              type="submit">Save</button>
+            <SaveBtn />
           </form>
         </div>
       </main>
