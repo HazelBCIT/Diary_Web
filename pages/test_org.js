@@ -5,8 +5,7 @@ import axios from 'axios'
 import Head from 'next/head'
 import Weather from '@/pages/api/weather';
 import ShowWeatherBtn from './api/weather_btn';
-import News from '@/pages/api/news';
-// import ShowNewsBtn from './api/news_btn';
+// import ShowWeatherBtn from './api/weather_btn';
 import LocationInput from './api/location_input';
 import SideMenu from '@/component/SideMenu';
 import UserName from '@/component/UserName';
@@ -18,9 +17,29 @@ import SaveBtn from '@/component/save_btn';
 
 export default function Home({posts}) {
 
+  const [newsData, setNewsDat] = useState();
+
+  var newsApiKey = '4551243115444ba0a100a9567cd1b61d';
+  var type = 'tesla';
+  var date = '2022-12-17';
+  var sortBy = 'publishedAt';
+
+  const newsUrl = `https://newsapi.org/v2/everything?q=${type}&from=${date}&sortBy=${sortBy}&newsApiKey=${newsApiKey}`;
+
+  const GrabNews = () => {
+    axios.get(newsUrl)
+      .then((response) => {
+        console.clear();
+        setNewsDat(response.data);
+        console.log(response.data);
+      }).catch(err => {
+        console.log(err)
+      })
+  }
+
   // Weather API
   const [location, setLocation] = useState('');
-  const [data,setData] = useState({});
+  const [newsDsetData] = useState({});
   const [weather, setWeather] = useState();
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -186,12 +205,12 @@ export default function Home({posts}) {
                   {today}
                 </div>
                 <div className={styles.infoBar_right}>
-                  {/* <News/> */}
                   <Weather
                     weather={weather}
                     data={data}
                   />
-                  <News/>
+                  <button
+                    onClick={() => GrabNews()}>Grab info</button>
                   <ShowWeatherBtn showWeatherHandler={showWeatherHandler} />
                   <ShowPromptsBtn showBtnHandler={showBtnHandler} />
                 </div>
