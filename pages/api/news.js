@@ -37,8 +37,12 @@ export default function News(props) {
   };
 
   return (
-    <div>
-      <button onClick={handleNews}>Get News</button>
+    <div
+      className={styles.news_Area}
+      >
+      <button
+        className={styles.news_btn_showArticle}
+        onClick={handleNews}>Get News</button>
       {error && <p>{error}</p>}
       {/* <ul style={{border: '1px solid black'}}>
         {articles.map((article) => (
@@ -48,11 +52,22 @@ export default function News(props) {
         ))}
       </ul> */}
       {articles.length > 0 && (
-        <div style={{border: '1px solid black'}}>
-          <h2>{articles[currentArticleIndex].name}</h2>
-          <p>{articles[currentArticleIndex].description}</p>
-          <p>{articles[currentArticleIndex].provider[0].name}</p>
+        <div
+          style={{border: '1px solid black'}}
+          className={styles.news_displayBox}
+          >
+          <h2 className={styles.news_displayName}>
+            {articles[currentArticleIndex].name}
+          </h2>
+          <p className={styles.news_displayDesc}>
+            {articles[currentArticleIndex].description}
+          </p>
+          <p className={styles.news_displayProvider}>
+            {articles[currentArticleIndex].provider[0].name}
+          </p>
+
           <button
+            className={styles.news_btn_changeArticle}
             onClick={() => setCurrentArticleIndex((currentArticleIndex + 1) % articles.length)}
           >
             Next Article
