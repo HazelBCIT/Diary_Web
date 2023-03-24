@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function News(props) {
-
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
   const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleNews = () => {
     const options = {
@@ -29,6 +29,7 @@ export default function News(props) {
       });
       setArticles(articlesWithKeys);
       setCurrentArticleIndex(0);
+      setShowPopup(true); // Show the popup when news articles are fetched
       console.log(response.data);
     }).catch(function (error) {
       console.error(error);
@@ -37,25 +38,25 @@ export default function News(props) {
   };
 
   return (
-    <div
-      className={styles.news_Area}
-      >
+    <div className={styles.news_Area}>
       <button
         className={styles.news_btn_showArticle}
-        onClick={handleNews}>Get News</button>
+        onClick={handleNews}>Get News
+      </button>
+
       {error && <p>{error}</p>}
-      {/* <ul style={{border: '1px solid black'}}>
-        {articles.map((article) => (
-          <li key={article.url}>
-            <a href={article.url}>{article.name}</a> ({article.provider[0].name})
-          </li>
-        ))}
-      </ul> */}
-      {articles.length > 0 && (
+      {showPopup && articles.length > 0 && (
         <div
           style={{border: '1px solid black'}}
           className={styles.news_displayBox}
           >
+
+          <button
+            className={styles.news_btn_closePopup}
+            onClick={() => setShowPopup(false)}>
+              <span dangerouslySetInnerHTML={{__html: '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15" stroke="#fff" strokeWidth="2" strokeLinecap="round"/><path d="M5 5L15 15" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>'}} />
+          </button>
+
           <h2 className={styles.news_displayName}>
             {articles[currentArticleIndex].name}
           </h2>
@@ -66,12 +67,22 @@ export default function News(props) {
             {articles[currentArticleIndex].provider[0].name}
           </p>
 
-          <button
-            className={styles.news_btn_changeArticle}
-            onClick={() => setCurrentArticleIndex((currentArticleIndex + 1) % articles.length)}
-          >
-            Next Article
-          </button>
+          <div className={styles.news_btn_cont}>
+
+            <button
+              className={styles.news_btn_changeArticle}
+              onClick={() => setCurrentArticleIndex((currentArticleIndex - 1 + articles.length) % articles.length)}
+              disabled={currentArticleIndex === 0}>
+                Previous Article
+            </button>
+
+            <button
+              className={styles.news_btn_changeArticle}
+              onClick={() => setCurrentArticleIndex((currentArticleIndex + 1) % articles.length)}>
+                Next Article
+            </button>
+          </div>
+
         </div>
       )}
     </div>
