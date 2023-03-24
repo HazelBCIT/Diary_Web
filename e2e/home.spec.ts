@@ -5,7 +5,6 @@ let urlHome = "http://localhost:3000";
 test.describe('Header area', () => {
   test('The title tag', async({ page }) => {
       await page.goto(urlHome)
-
       await expect(page).toHaveTitle('Miood Diary');
   })
 
@@ -91,7 +90,7 @@ test.describe('Save button', () => {
   await expect(page.locator('button > span')).toHaveCount(4);
   })
 
-  test('Save button  stylizing', async({ page }) => { 
+  test('Save button stylizing', async({ page }) => { 
     await page.goto(urlHome)
 
     const saveBtn = page.locator('#btn');
