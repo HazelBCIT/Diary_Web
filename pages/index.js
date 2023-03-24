@@ -146,6 +146,8 @@ export default function Home({posts}) {
       >
       <Head>
 
+        <TopBar />
+
         <title>Miood Diary</title>
 
         <meta name="description" content="A diary app that you can write everyday event" />
@@ -154,7 +156,6 @@ export default function Home({posts}) {
       </Head>
 
       <SideMenu />
-      <TopBar />
 
       <main className={styles.main}>
         <div className={styles.wrapper_main}>
