@@ -10,7 +10,7 @@ export default function SideMenu(){
       <ul className={styles.sidemenu_list}>
         <li className={styles.sidemenu_list_item}>
           <Link
-            href=""
+            href="/"
             className={styles.sidemenu_list_text}>
               <img style={{padding:2}} src="/icons/add.png"/>
               New Diary
@@ -28,7 +28,7 @@ export default function SideMenu(){
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
-            href=""
+            href="/cover"
             className={styles.sidemenu_list_text}>
               <img src="/icons/favorite.png"/>
               Favorite Diary

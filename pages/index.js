@@ -162,7 +162,8 @@ export default function Home({posts}) {
           {/*------------ Change BG button ----------- */}
           <button className={styles.bg_button} onClick={changeBackgroundImage}>
             <img src="/icons/brush.png" alt=""/>
-            <div className={styles.tooltip_content}>
+            <div className={styles.tooltip_content} style={{right:65,
+  top:20}}>
               Change Background
             </div>
           </button>
@@ -188,11 +189,8 @@ export default function Home({posts}) {
                 </div>
                 <div className={styles.infoBar_right}>
                   {/* <News/> */}
-                  <Weather
-                    weather={weather}
-                    data={data}
-                  />
                   <News/>
+                  <Weather weather={weather} data={data} />
                   <ShowWeatherBtn showWeatherHandler={showWeatherHandler} />
                   <ShowPromptsBtn showBtnHandler={showBtnHandler} />
                 </div>

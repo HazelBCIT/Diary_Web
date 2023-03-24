@@ -494,7 +494,7 @@
   color: black;
   width: 70vw;
   max-width: none;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -558,7 +558,7 @@
   align-items: center;
   width: 25%;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .textarea_diaryContent {
@@ -592,12 +592,13 @@
   color: #fff;
 }
 
-.bg_button .tooltip_content {
+.tooltip_content {
   display: none;
   position: absolute;
   right:65px;
   top:20px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.501);
+  color: #585858;
   border-radius: 5px;
   padding: .5em;
   min-width: 10rem;
@@ -605,6 +606,11 @@
 
 .bg_button:hover .tooltip_content{
   display: block;
+}
+
+.icon:hover .tooltip_content{
+  display: block;
+  position: absolute;
 }
 
 .topbar_container {
