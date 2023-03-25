@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '@/styles/Home.module.css';
-import Weather from '../pages/api/weather.js';
+import styles from '@/src/styles/Home.module.css';
+import Weather from '@/src/pages/api/weather.js';
 
 export default function WriteArea() {
   return (

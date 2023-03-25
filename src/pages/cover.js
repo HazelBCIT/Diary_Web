@@ -1,12 +1,12 @@
-import styles from '@/styles/Home.module.css'
+import styles from '@/src/styles/Home.module.css'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
 import Lottie from 'lottie-react'
-import animationData from '../public/arrow.json';
-import UserName from '@/component/UserName';
-import TopBar from '@/component/top_bar';
+import animationData from '@/arrow.json';
+import UserName from '@/src/component/UserName';
+import TopBar from '@/src/component/top_bar';
 
 
 export default function CoverPage() {
@@ -46,7 +46,7 @@ export default function CoverPage() {
                 speed={0.5}
                 className={styles.arrow_lottie}
         />
-        
+
         <img className={styles.cover_image} src="cover/cover(navy).png" alt="diary cover" />
       </div>
     </div>

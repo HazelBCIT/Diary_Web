@@ -1,11 +1,11 @@
-import styles from '@/styles/Home.module.css'
+import styles from '@/src/styles/Home.module.css'
 import { Inter } from '@next/font/google'
 import { prisma } from '@/server/db/client'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
-import { MyPosts } from '@/pages/index';
-import UserName from '@/component/UserName.js';
+import { MyPosts } from '@/src/pages/index';
+import UserName from '@/src/component/UserName.js';
 
 export async function getServerSideProps() {
   try{

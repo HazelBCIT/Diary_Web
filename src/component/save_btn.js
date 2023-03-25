@@ -1,4 +1,4 @@
-import styles from '@/styles/SaveBtn.module.css'
+import styles from '@/src/styles/SaveBtn.module.css'
 
 
 export default function SaveBtn() {

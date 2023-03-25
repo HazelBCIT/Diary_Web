@@ -1,45 +1,42 @@
-import styles from '@/styles/Home.module.css'
+import styles from '@/src/styles/Home.module.css'
 import { prisma } from '@/server/db/client'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Head from 'next/head'
-import Weather from '@/pages/api/weather';
-import ShowWeatherBtn from './api/weather_btn';
-// import ShowWeatherBtn from './api/weather_btn';
+import Weather from '@/src/pages/api/weather';
+import ShowWeatherBtn from '@/src/pages/api/weather_btn';
+import { News } from '@/src/pages/api/news';
+import { SavedNews } from '@/src/pages/api/news';
 import LocationInput from './api/location_input';
-import SideMenu from '@/component/SideMenu';
-import UserName from '@/component/UserName';
-import Prompts from '@/component/prompts';
-import ShowPromptsBtn from '@/component/prompts_btn';
-import TopBar from '@/component/top_bar';
-import SaveBtn from '@/component/save_btn';
+import SideMenu from '@/src/component/SideMenu';
+import UserName from '@/src/component/UserName';
+import Prompts from '@/src/component/prompts';
+import ShowPromptsBtn from '@/src/component/prompts_btn';
+import TopBar from '@/src/component/top_bar';
+import SaveBtn from '@/src/component/save_btn';
 
 
 export default function Home({posts}) {
 
-  const [newsData, setNewsDat] = useState();
+  // News API
+  const [newsAreaContent, setNewsAreaContent] = useState('');
+  const [savedArticles, setSavedArticles] = useState([]);
 
-  var newsApiKey = '4551243115444ba0a100a9567cd1b61d';
-  var type = 'tesla';
-  var date = '2022-12-17';
-  var sortBy = 'publishedAt';
+  const handleSave = () => {
+    props.handleSave(name, content);
+    setSaved(true);
+  };
 
-  const newsUrl = `https://newsapi.org/v2/everything?q=${type}&from=${date}&sortBy=${sortBy}&newsApiKey=${newsApiKey}`;
+  function handleNewsSave(name, content) {
+    console.log(`Saving article: ${name}, ${content}`);
+    setSavedArticles([...savedArticles, {name, content}]);
+    setNewsAreaContent(`${name}\n\n${content}\n\n`);
+  };
 
-  const GrabNews = () => {
-    axios.get(newsUrl)
-      .then((response) => {
-        console.clear();
-        setNewsDat(response.data);
-        console.log(response.data);
-      }).catch(err => {
-        console.log(err)
-      })
-  }
 
   // Weather API
   const [location, setLocation] = useState('');
-  const [newsDsetData] = useState({});
+  const [data,setData] = useState({});
   const [weather, setWeather] = useState();
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -48,7 +45,7 @@ export default function Home({posts}) {
   var weatherUnits = "metric";
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${weatherUnits}&appid=${weatherApiKey}&lang=${weatherLang}`
 
-    const searchLocation = (event) => {
+  const searchLocation = (event) => {
 
     if(event.key === "Enter") {
       axios.get(weatherUrl)
@@ -165,6 +162,8 @@ export default function Home({posts}) {
       >
       <Head>
 
+        <TopBar />
+
         <title>Miood Diary</title>
 
         <meta name="description" content="A diary app that you can write everyday event" />
@@ -173,7 +172,6 @@ export default function Home({posts}) {
       </Head>
 
       <SideMenu />
-      <TopBar />
 
       <main className={styles.main}>
         <div className={styles.wrapper_main}>
@@ -209,10 +207,16 @@ export default function Home({posts}) {
                     weather={weather}
                     data={data}
                   />
-                  <button
-                    onClick={() => GrabNews()}>Grab info</button>
-                  <ShowWeatherBtn showWeatherHandler={showWeatherHandler} />
-                  <ShowPromptsBtn showBtnHandler={showBtnHandler} />
+
+                  <News handleSave={handleNewsSave} />
+
+                  <ShowWeatherBtn
+                    showWeatherHandler={showWeatherHandler}
+                  />
+
+                  <ShowPromptsBtn
+                    showBtnHandler={showBtnHandler}
+                  />
                 </div>
               </div>
 
@@ -336,11 +340,13 @@ export default function Home({posts}) {
 
             <textarea
               style={{ fontFamily: fontFamily , fontSize:fontSize }}
-              value={content}
+              value={newsAreaContent + '\n\n' + content}
+              // value={content}
               className={styles.textarea_diaryContent}
               placeholder="Write about your day"
-              onChange={(e) => setContent(e.target.value)}
-            />
+              onChange={(e) => setContent(e.target.value)} />
+
+
 
             <SaveBtn />
           </form>

@@ -1,4 +1,4 @@
-import styles from '@/styles/Home.module.css'
+import styles from '@/src/styles/Home.module.css'
 
 export default function ShowPromptsBtn(props) {
   return (
@@ -6,4 +6,3 @@ export default function ShowPromptsBtn(props) {
     <img src="/icons/bulb.png" />
   </button>);
 }
-

@@ -3,11 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-// module.exports = nextConfig
+const path = require('path');
 
 module.exports = {
-  reactStrictMode: true,
-  env: {
-    DATABASE_URL: process.env.DATABASE_URL,
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    config.resolve.alias['@'] = path.resolve(__dirname);
+
+    return config;
   }
-}
+};

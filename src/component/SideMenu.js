@@ -1,6 +1,6 @@
-import styles from '@/styles/SideMenu.module.css'
+import styles from '@/src/styles/SideMenu.module.css'
 import Link from 'next/link'
-import UserName from '@/component/UserName.js';
+import UserName from '@/src/component/UserName.js';
 
 // const PostList = () => <MyPosts />;
 export default function SideMenu(){
@@ -19,7 +19,7 @@ export default function SideMenu(){
         </li>
         <li className={styles.sidemenu_list_item}>
           <Link
-            href="@/pages/PostList/index.js"
+            href="/PostList/postlist"
             className={styles.sidemenu_list_text}>
               <img style={{padding:3}} src="/icons/list.png"/>
               Diary List
