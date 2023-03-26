@@ -1,6 +1,22 @@
+## Description
+Miood Diary is an online platform designed for users to write and organize their personal thoughts, experiences, and reflections. It provides a secure and private space for users to record their daily activities, moods, goals, and aspirations.
+
+## Features
+# Intuitive
+Experience an enjoyable writing experience with our user-friendly interface. Navigate the website with ease, and write your diary entries with confidence and ease."
+# Inspirational
+Get inspiration with a diverse range of content that includes current events, inspiring quotes, and thought-provoking ideas. 
+
+# Customizable
+Personalize the diary entries with beautiful fonts and backgrounds to unlock user's creativity, inspiration, and self-expression.
+
 ## Installation
+
+```bash
 npm i lottie-react
+
 npm i playwright
+```
 ## Getting Started
 
 First, run the development server:
@@ -15,11 +31,10 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Data Sources
+OpenWeather [https://openweathermap.org/] (https://openweathermap.org/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
+## References
+https://journey.cloud/
+https://monkkee.com/en
+https://penzu.com/app/login
