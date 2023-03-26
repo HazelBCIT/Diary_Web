@@ -7,6 +7,7 @@ import Lottie from 'lottie-react'
 import animationData from '../public/arrow.json';
 import UserName from '@/component/UserName';
 import TopBar from '@/component/top_bar';
+import Footer from '@/component/footer';
 
 
 export default function CoverPage() {
@@ -49,6 +50,7 @@ export default function CoverPage() {
         
         <img className={styles.cover_image} src="cover/cover(navy).png" alt="diary cover" />
       </div>
+      <Footer />
     </div>
 
   )

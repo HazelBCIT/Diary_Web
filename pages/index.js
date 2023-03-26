@@ -14,6 +14,7 @@ import Prompts from '@/component/prompts';
 import ShowPromptsBtn from '@/component/prompts_btn';
 import TopBar from '@/component/top_bar';
 import SaveBtn from '@/component/save_btn';
+import Footer from '@/component/footer';
 
 
 export default function Home({posts}) {
@@ -325,6 +326,7 @@ export default function Home({posts}) {
             <SaveBtn />
           </form>
         </div>
+        <Footer />
       </main>
 
     </div>
